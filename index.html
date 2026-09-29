@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Info Card</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="form-card">
+      <h1>User Info Card</h1>
+      <p class="subtitle">Fill in your details then click the button</p>
+
+      <label class="field-label" for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Juan dela Cruz" />
+
+      <label class="field-label" for="email">Email Address</label>
+      <input type="email" id="email" placeholder="juan@gmail.com" />
+
+      <div class="row">
+        <div>
+          <label class="field-label" for="age">Age</label>
+          <input type="number" id="age" placeholder="20" />
+        </div>
+        <div>
+          <label class="field-label" for="birthday">Birthday</label>
+          <input type="date" id="birthday" />
+        </div>
+      </div>
+
+      <label class="field-label" for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="09xxxxxxxxx" />
+
+      <div class="row">
+        <div>
+          <label class="field-label" for="course">Course</label>
+          <input type="text" id="course" placeholder="BSIT" />
+        </div>
+        <div>
+          <label class="field-label" for="yearLevel">Year Level</label>
+          <input type="text" id="yearLevel" placeholder="2nd Year" />
+        </div>
+      </div>
+
+      <label class="field-label" for="bio">Short Bio</label>
+      <textarea
+        id="bio"
+        placeholder="Write a short bio about yourself"
+      ></textarea>
+
+      <p class="field-label">Favorite Color</p>
+      <form id="fColor">
+        <label>
+          <input type="radio" id="red" name="color" value="Red" />
+          Red
+        </label>
+
+        <label>
+          <input type="radio" id="blue" name="color" value="Blue" />
+          Blue
+        </label>
+
+        <label>
+          <input type="radio" id="green" name="color" value="Green" />
+          Green
+        </label>
+
+        <label>
+          <input type="radio" id="black" name="color" value="Black" />
+          Black
+        </label>
+      </form>
+
+      <p class="field-label">Hobbies</p>
+      <form id="Hobs">
+        <label for="Gaming">
+          <input type="checkbox" id="Gaming" value="Gaming" />
+          Gaming
+        </label>
+        <label for="Reading">
+          <input type="checkbox" id="Reading" value="Reading" />
+          Reading
+        </label>
+        <label for="Sports">
+          <input type="checkbox" id="Sports" value="Sports" />
+          Sports
+        </label>
+        <label for="Music">
+          <input type="checkbox" id="Music" value="Music" />
+          Music
+        </label>
+      </form>
+
+      <button onclick="pindot()">Show My Info</button>
+    </div>
+
+    <div id="your-info">
+      <h2>Your Info</h2>
+      <label class="info-line" id="displayName">Fullname: </label>
+      <label class="info-line" id="displayEmail">Email Address: </label>
+      <label class="info-line" id="displayAge">Age: </label>
+      <label class="info-line" id="displayBirthday">Birthday: </label>
+      <label class="info-line" id="displayPhone">Phone Number: </label>
+      <label class="info-line" id="displayCourse">Course: </label>
+      <label class="info-line" id="displayYear">Year Level: </label>
+      <label class="info-line" id="displayBio">Short Bio: </label>
+      <label class="info-line" id="displayColor">Favorite Color: </label>
+      <label class="info-line" id="displayHobbies">Hobbies: </label>
+    </div>
+
+    <script>
+      function pindot() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let age = document.getElementById("age").value;
+        let birth = document.getElementById("birthday").value;
+        let num = document.getElementById("phone").value;
+        let program = document.getElementById("course").value;
+        let level = document.getElementById("yearLevel").value;
+        let bio = document.getElementById("bio").value;
+        let color = document.querySelector('input[name = "color"]:checked');
+        let hobbies = " ";
+
+        document.getElementById("displayName").textContent =
+          `Fullname: ${name}`;
+        document.getElementById("displayEmail").textContent =
+          `Email Address: ${email}`;
+        document.getElementById("displayAge").textContent = `Age: ${age}`;
+        document.getElementById("displayBirthday").textContent =
+          `Birthday: ${birth}`;
+        document.getElementById("displayPhone").textContent =
+          `Phone Number: ${num}`;
+        document.getElementById("displayCourse").textContent =
+          `Course: ${program}`;
+        document.getElementById("displayYear").textContent = `Year: ${level}`;
+        document.getElementById("displayBio").textContent = `Short Bio: ${bio}`;
+
+        if (color) {
+          document.getElementById("displayColor").textContent =
+            "Favorite Color: " + color.value;
+        }
+
+        if (document.getElementById("Gaming").checked) {
+          hobbies += document.getElementById("Gaming").value + " ";
+        }
+
+        if (document.getElementById("Reading").checked) {
+          hobbies += document.getElementById("Reading").value + " ";
+        }
+
+        if (document.getElementById("Sports").checked) {
+          hobbies += document.getElementById("Sports").value + " ";
+        }
+
+        if (document.getElementById("Music").checked) {
+          hobbies += document.getElementById("Music").value + " ";
+        }
+
+        document.getElementById("displayHobbies").textContent =
+          `Hobbies: ${hobbies}`;
+
+        let btn = document.getElementsByTagName("button")[0];
+        btn.textContent = "Info Shown!";
+
+        let box = document.getElementById("your-info");
+        box.style.backgroundColor = "#eaf2ff";
+        box.classList.add("done");
+        btn.setAttribute("title", "Info already shown");
+      }
+    </script>
+  </body>
+</html>
